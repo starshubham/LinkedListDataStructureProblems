@@ -31,10 +31,9 @@ namespace LinkedListDataStructureProblems
             //UC3
             LinkedList list3 = new LinkedList();
             list3.Add(56);
-            int a1 = list3.Search(56);
-            Console.WriteLine("index position of 56 is : " + a1);
-            list3.InsertAtParticularPosition(a1+1, 30);
-            list3.InsertAtParticularPosition(a1+1, 70);
+            list3.InsertAfter(30, 56);
+            list3.InsertAfter(70, 30);
+            Console.WriteLine("List after appending 30 and 70");
             list3.Display();
             Console.WriteLine("*********Program End**********\n");
 
@@ -75,7 +74,7 @@ namespace LinkedListDataStructureProblems
             list7.Add(56);
             list7.Add(30);
             list7.Add(70);
-            int a3 = list2.Search(30);
+            int a3 = list7.Search(30);
             Console.WriteLine("index position of 30 is : " + a3);
             list7.Display();
             Console.WriteLine("*********Program End**********\n");
@@ -86,39 +85,27 @@ namespace LinkedListDataStructureProblems
             list8.Add(30);
             list8.Add(70);
             list8.Display();
-            int a4 = list2.Search(30);
+            int a4 = list8.Search(30);
             Console.WriteLine("index position of 30 is : " + a4);
-            list8.InsertAtParticularPosition(a1+2, 40);
+            list8.InsertAfter(40, 30);
             Console.WriteLine("list after update");
             list8.Display();
             Console.WriteLine("*********Program End**********\n");
 
             //UC9
-
-            // Creating a list of integers
-            List<int> list9 = new List<int>();
-
-            // Adding items to the list
+            LinkedList list9 = new LinkedList();
             list9.Add(56);
             list9.Add(30);
             list9.Add(40);
             list9.Add(70);
-            System.Console.WriteLine("Original List:");
-
-            // Printing the list          
-            list9.ForEach(System.Console.WriteLine);
-
-            // Calling RemoveAt() method
-            int a5 = list9.IndexOf(40);
-            Console.WriteLine("index of 40 is : " + a5);
-            list9.RemoveAt(2);
-            System.Console.WriteLine("After removing item at index 2:");
-            // Printing the list
-            list9.ForEach(System.Console.WriteLine);
+            list9.Display();
+            list9.DeleteAny(40);            
+            Console.WriteLine("List after deletion of 40");
+            list9.Display();
+            Console.WriteLine("Size of Linked List is: " + list9.size());
             Console.WriteLine("*********Program End**********\n");
 
             //UC10
-
             SortList<int> sList = new SortList<int>();
             //Adds data to the list  
             sList.addNode(56);

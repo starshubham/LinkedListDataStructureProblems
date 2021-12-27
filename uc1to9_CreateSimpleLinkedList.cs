@@ -39,7 +39,32 @@ namespace LinkedListDataStructureProblems
             }
             Console.WriteLine("{0} inserted into linked list", node.data);
         }
-        internal Node InsertAtParticularPosition (int position, int data)
+        public bool InsertAfter(int data, int after)    //insert in between the sequences
+        {
+            bool flag = false;
+            if (head == null)
+                Console.WriteLine("List is Empty");
+            else
+            {
+                Node temp = head;
+                while (temp != null)
+                {
+                    if (temp.data == after)
+                    {
+                        Node newNode = new Node(data);
+                        newNode.next = temp.next;
+                        temp.next = newNode;
+                        flag = true;
+                        break;
+                    }
+                    temp = temp.next;
+                }
+                if (!flag)
+                    Console.WriteLine("The Element is Absent");
+            }
+            return flag;
+        }
+        internal Node InsertAtParticularPosition(int position, int data)
         {
             if (position < 1)
                 Console.WriteLine("Invalid Position");
@@ -54,17 +79,17 @@ namespace LinkedListDataStructureProblems
                 while (position-- != 0)
                 {
                     if (position == 1)
-                    {                        
-                        Node node = new Node(data);
-                        node.next = this.head.next;
-                        head.next = node;
+                    {
+                        Node newNode = new Node(data);
+                        newNode.next = this.head.next;
+                        head.next = newNode;
                         break;
                     }
                     head = head.next;
                 }
                 if (position != 1)
                     Console.WriteLine("Position out of range");
-            }            
+            }
             return head;
         }
         internal int Search(int value)
@@ -79,6 +104,53 @@ namespace LinkedListDataStructureProblems
                 }
                 node = node.next;
                 count++;
+            }
+            return count;
+        }
+        public bool DeleteAny(int data)     //delete data
+        {
+            bool flag = false;
+            int count = 0;
+
+            if (head == null)
+                Console.WriteLine("List is Empty");
+            else
+            {
+                Node temp = head;
+                Node previousNode = null;
+                while (temp != null)
+                {
+                    count++;
+                    if (temp.data == data)
+                    {
+                        if (count == 1)
+                        {
+                            head = temp.next;
+                        }
+                        else
+                        {
+                            previousNode.next = temp.next;
+                        }
+                        flag = true;
+                        break;
+                    }
+                    previousNode = temp;
+                    temp = temp.next;
+                }
+                if (!flag)
+                    Console.WriteLine("The Element is Absent");
+            }
+
+            return flag;
+        }
+        public int size()
+        {
+            Node temp = head;
+            int count = 0;
+            while (temp != null)
+            {
+                count++;
+                temp = temp.next;
             }
             return count;
         }
